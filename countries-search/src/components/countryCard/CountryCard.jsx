@@ -7,7 +7,6 @@ const CountryCard = () => {
   const [filteredCountries, setFilteredCountries] = useState([]);
   const [searchInput, setSearchInput] = useState("");
 
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -30,22 +29,30 @@ const CountryCard = () => {
     const searchValue = e.target.value;
     setSearchInput(searchValue);
     const filtered = countries.filter((country) => {
-      return country.name.common.toLowerCase().includes(searchValue.toLowerCase());
+      return country.name.common
+        .toLowerCase()
+        .includes(searchValue.toLowerCase());
     });
     setFilteredCountries(filtered);
   };
 
   return (
     <div>
-      <input className="search-input" value={searchInput} onChange={handleSearch} type="text" placeholder="Search for countries.." />
+      <input
+        className="search-input"
+        value={searchInput}
+        onChange={handleSearch}
+        type="text"
+        placeholder="Search for countries.."
+      />
       <div className="country-card-container">
         {filteredCountries.map((country) => (
-            <div key={country.name.cca3} className="country-card">
-                <img src={country.flags.svg} alt={country.name.common} />
-                <p>{country.name.common}</p>
-                </div>
+          <div key={country.name.cca3} className="country-card">
+            <img src={country.flags.svg} alt={country.name.common} />
+            <p>{country.name.common}</p>
+          </div>
         ))}
-        </div>
+      </div>
     </div>
   );
 };

@@ -11,14 +11,14 @@
     margin-bottom: 20px;
 }
 
-.country-card-container {
+.countryCard {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
     padding: 20px;
 }
 
-.country-card {
+.countryCard .country-card {    
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 10px;

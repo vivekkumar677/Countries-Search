@@ -16,6 +16,7 @@ const CountryCard = () => {
         }
         const data = await response.json();
         setCountries(data);
+        console.log(data)
         setFilteredCountries(data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -45,10 +46,10 @@ const CountryCard = () => {
         type="text"
         placeholder="Search for countries.."
       />
-      <div className="country-card-container">
+      <div className="countryCard">
         {filteredCountries.map((country) => (
           <div key={country.name.cca3} className="country-card">
-            <img src={country.flags.svg} alt={country.name.common} />
+            <img src={country.flags.png} alt={country.name.common} />
             <p>{country.name.common}</p>
           </div>
         ))}

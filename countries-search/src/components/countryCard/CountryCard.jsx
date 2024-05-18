@@ -6,6 +6,7 @@ const CountryCard = () => {
   const [countries, setCountries] = useState([]);
   const [filteredCountries, setFilteredCountries] = useState([]);
   const [searchInput, setSearchInput] = useState("");
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,8 +20,8 @@ const CountryCard = () => {
         console.log(data)
         setFilteredCountries(data);
       } catch (error) {
-        console.error("Error fetching data:", error);
-        // setError(error);
+        // console.error("Error fetching data:", error);
+        setError(error);
       }
     };
     fetchData();
@@ -46,7 +47,10 @@ const CountryCard = () => {
         type="text"
         placeholder="Search for countries.."
       />
-      <div className="countryCard">
+      {error ? (
+        <div>{error}</div>
+      ) : (
+        <div className="countryCard">
         {filteredCountries.map((country) => (
           <div key={country.name.cca3} className="country-card">
             <img src={country.flags.png} alt={country.name.common} />
@@ -54,6 +58,7 @@ const CountryCard = () => {
           </div>
         ))}
       </div>
+      )}
     </div>
   );
 };

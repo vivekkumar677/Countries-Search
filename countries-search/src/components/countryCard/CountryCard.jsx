@@ -20,7 +20,7 @@ const CountryCard = () => {
         console.log(data)
         setFilteredCountries(data);
       } catch (error) {
-        // console.error("Error fetching data:", error);
+        console.error("Error fetching data:", error);
         setError(error);
       }
     };
